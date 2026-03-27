@@ -29,11 +29,6 @@ router.post("/", authMiddleware, async (req, res) => {
 		});
 	} catch (err) {
 		console.error(err);
-		if (err.name === "SequelizeUniqueConstraintError") {
-			return res
-				.status(400)
-				.json({ message: "this doctor is already assigned to this patient" });
-		}
 		res.status(500).json({ message: "server error" });
 	}
 });
